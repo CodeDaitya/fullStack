@@ -20,7 +20,7 @@ app.get('./dishes', function(req, res, next){
 });
 
 app.post('./dishes', function(req, res, next){
-	res.end('Adds the dish: '+res.body.name+' with details: '+res.body.description);
+	res.end('Adds the dish: '+req.body.name+' with details: '+res.body.description);
 });
 
 app.delete('./dishes', function(req, res, next){
@@ -28,15 +28,15 @@ app.delete('./dishes', function(req, res, next){
 });
 
 app.get('./dishes', function(req, res, next){
-	res.end('Send the dish: '+res.params.dishId+' to you');
+	res.end('Send the dish: '+req.params.dishId+' to you');
 });
 
 app.put('./dishes/:dishId', function(req, res, next){
-	res.write('Updating  the dish: '+res.params.dishId+'\n')
+	res.write('Updating  the dish: '+req.params.dishId+'\n')
 });
 
 app.delete('./dishes/:dishId', function(req, res, next){
-	res.end('Deleting dish: '+res.params.dishId);
+	res.end('Deleting dish: '+req.params.dishId);
 });
 
 app.use(express.static(__dirname+'./public'));

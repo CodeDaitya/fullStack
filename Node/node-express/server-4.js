@@ -25,7 +25,7 @@ dishRouter.route('/')
 })
 
 .post(function(req, res, next){
-	res.end('Adds the dish: '+res.body.name+' with details: '+res.body.description);
+	res.end('Adds the dish: '+req.body.name+' with details: '+req.body.description);
 })
 
 .delete(function(req, res, next){
@@ -35,15 +35,15 @@ dishRouter.route('/')
 dishRouter.route('/:dishId')
 
 .get('/:dishId', function(req, res, next){
-	res.end('Send the dish: '+res.params.dishId+' to you');
+	res.end('Send the dish: '+req.params.dishId+' to you');
 })
 
 .put('/:dishId', function(req, res, next){
-	res.write('Updating  the dish: '+res.params.dishId+'\n')
+	res.write('Updating  the dish: '+req.params.dishId+'\n')
 })
 
 .delete('/:dishId', function(req, res, next){
-	res.end('Deleting dish: '+res.params.dishId);
+	res.end('Deleting dish: '+req.params.dishId);
 });
 
 app.use('/dishes', dishRouter);
