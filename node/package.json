@@ -1,0 +1,33 @@
+{
+  "name": "node",
+  "version": "1.0.0",
+  "description": "For Node practice",
+  "main": "none",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CodeDaitya/fullStack.git"
+  },
+  "keywords": [
+    "node",
+    "express",
+    "full",
+    "stack"
+  ],
+  "author": "Deepak Maurya",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/CodeDaitya/fullStack/issues"
+  },
+  "homepage": "https://github.com/CodeDaitya/fullStack#readme",
+  "dependencies": {
+    "assert": "^1.4.1",
+    "body-parser": "^1.17.2",
+    "express": "^4.15.3",
+    "mongodb": "^2.2.30",
+    "morgan": "^1.8.2",
+    "yargs": "^8.0.2"
+  }
+}
