@@ -27,6 +27,8 @@
     "body-parser": "^1.17.2",
     "express": "^4.15.3",
     "mongodb": "^2.2.30",
+    "mongoose": "^4.11.4",
+    "mongoose-currency": "^0.2.0",
     "morgan": "^1.8.2",
     "yargs": "^8.0.2"
   }
