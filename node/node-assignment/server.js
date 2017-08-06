@@ -11,9 +11,9 @@ var app = express();
 
 app.use(morgan('dev'));
 
-dishRouter(app);
-leaderRouter(app);
-promoRouter(app);
+app.use('/dishes', dishRouter);
+app.use('leadership', leaderRouter);
+app.use('/promotions', promoRouter);
 
 app.use(express.static(__dirname + '/public'));
 
