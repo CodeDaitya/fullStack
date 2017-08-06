@@ -11,8 +11,8 @@ var promoSchema = new Schema({
     unique: true
   },
   image: {
-    data: Buffer,
-    contentType: String
+    type: String,
+    required: true
   },
   label: {
     type: String,
