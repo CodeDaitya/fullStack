@@ -8,7 +8,7 @@ exports.getToken = function(user){
   });
 }
 
-exports.verifyOrdinayUser = function(req, res, next){
+exports.verifyOrdinaryUser = function(req, res, next){
   var token = req.body.token||req.query.token||req.headers['x-access-token'];
 
   if(token){
