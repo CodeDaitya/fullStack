@@ -1,0 +1,14 @@
+{
+  "name": "hapiEx",
+  "version": "1.0.0",
+  "description": "experiment project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "hapi": "^16.5.2"
+  }
+}
