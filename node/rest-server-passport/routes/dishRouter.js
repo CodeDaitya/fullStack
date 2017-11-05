@@ -35,7 +35,7 @@ dishRouter.route('/')
 	});
 });
 
-dishRouter.route(':/dishId')
+dishRouter.route('/:dishId')
 .all(Verify.verifyOrdinaryUser)
 .get(function(req,res,next){
 	Dishes.findById(req.params.dishId, function(err, dish){

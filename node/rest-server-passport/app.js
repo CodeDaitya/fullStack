@@ -6,10 +6,8 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var passport = require('passport');
-var LocalStrategy = require('passport-local').Strategy;
-
 var config = require('./config');
-
+var authenticate = require('./authenticate');
 mongoose.connect(config.mongoUrl, {useMongoClient: true});
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'Connection Error: '));
@@ -50,11 +48,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-var User = require('./models/user');
+// passport configuration
 app.use(passport.initialize());
-passport.use(new LocalStrategy(User.authenticate()));
-passport.serializeUser(User.serializeUser());
-passport.deserializeUser(User.deserializeUser());
 
 app.use(express.static(path.join(__dirname+'public')));
 
@@ -63,6 +58,7 @@ app.use('/users', users);
 app.use('/dishes', dishRouter);
 app.use('/promotions', promoRouter);
 app.use('/leadership', leaderRouter);
+app.use('favourites', favouriteRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
