@@ -1,3 +1,8 @@
-node_modules
-data
+mongodb/
 .vscode
+
+node_modules/
+$RECYCLE.BIN/
+
+.DS_Store
+Thumbs.db
