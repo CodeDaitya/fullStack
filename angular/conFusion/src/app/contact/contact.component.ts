@@ -46,7 +46,6 @@ export class ContactComponent implements OnInit {
 	}
 
   ngOnInit() {
-		this.feedback = this.feedbackForm.value;
 	}
 	
   createForm() {

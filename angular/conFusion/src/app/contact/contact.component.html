@@ -38,7 +38,7 @@ fxLayoutGap="10px">
 
 	<div fxFlex fxFlexOffset class="form-size">
 		<h3>Send Us Your Feedback</h3>
-		<p>{{ feedback | json }} {{ feedbackForm.status | json }}</p>
+		<p>{{ feedbackForm.value | json }} {{ feedbackForm.status | json }}</p>
 
 		<form novalidate [formGroup]="feedbackForm" (ngSubmit)="onSubmit()">
 			<p>
