@@ -6,6 +6,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { ReactiveFormsModule } from '@angular/forms';
+import { RestangularModule, Restangular } from 'ngx-restangular';
 
 import 'hammerjs';
 
@@ -27,6 +28,7 @@ import { ProcessHttpmsgService } from './services/process-httpmsg.service';
 import { AppRoutingModule } from './app-routing/app-routing.module';
 
 import { baseURL } from './shared/baseurl';
+import { RestangularConfigFactory } from './shared/restConfig';
 
 @NgModule({
   declarations: [
@@ -48,7 +50,8 @@ import { baseURL } from './shared/baseurl';
 		MaterialModule,
 		FlexLayoutModule,
 		AppRoutingModule,
-		ReactiveFormsModule
+		ReactiveFormsModule,
+		RestangularModule.forRoot(RestangularConfigFactory)
   ],
   providers: [ 
 		DishService,
