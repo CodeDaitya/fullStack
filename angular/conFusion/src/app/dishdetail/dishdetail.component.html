@@ -6,7 +6,7 @@
 	fxLayoutGap="10px" 
 	fxLayoutGap.xs="0">
 
-	<div fxFlex="40">
+	<div fxFlex="40" [@visibility]='visibility'>
 		<md-card *ngIf="dish">
 			<md-card-header>
 				<md-card-title>
@@ -45,7 +45,7 @@
 
 	<div fxFlex="40">
 		
-		<md-list *ngIf="dish">
+		<md-list *ngIf="dish" [@visibility]='visibility'>
 			<h2 md-line>Comments</h2>
 			<md-list-item *ngFor="let c of dish.comments">
 				<p md-line>{{c.comment}}</p>
@@ -62,7 +62,7 @@
 			</md-list-item>
 		</md-list>
 
-		<form novalidate [formGroup]="commentForm" (ngSubmit)="onSubmit()" *ngIf="dish">
+		<form novalidate [formGroup]="commentForm" (ngSubmit)="onSubmit()" *ngIf="dish" [@visibility]='visibility'>
 			<p>
 				<md-input-container dividerColor="{{(formErrors.author) ? 'warn' : 'primary'}}">
 					<input mdInput formControlName="author" placeholder="Name" type="text" required>
