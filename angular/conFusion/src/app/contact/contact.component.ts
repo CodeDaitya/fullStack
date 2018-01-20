@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
+import { FeedbackService } from '../services/feedback.service'
 import { Feedback, ContactType } from '../shared/feedback';
-import { flyInOut } from '../animations/app.animations';
+import { flyInOut, expand } from '../animations/app.animations';
 
 @Component({
   selector: 'app-contact',
@@ -13,14 +14,17 @@ import { flyInOut } from '../animations/app.animations';
 		'style': 'display: block;'
 	},
 	animations: [
-		flyInOut()
+		flyInOut(),
+		expand()
 	]
 })
 export class ContactComponent implements OnInit {
 
 	feedbackForm: FormGroup;
 	feedback: Feedback;
+	fdb: Feedback;
 	contactType = ContactType;
+	errMess: string;
 
 	formErrors = {
 		'firstname': '',
@@ -50,7 +54,8 @@ export class ContactComponent implements OnInit {
     },
 	};
 
-  constructor(private fb: FormBuilder) {
+	constructor(private fb: FormBuilder,
+		private feedbackservice: FeedbackService) {
 		this.createForm();
 	}
 
@@ -93,8 +98,20 @@ export class ContactComponent implements OnInit {
 	}
 
   onSubmit() {
-    this.feedback = this.feedbackForm.value;
-    console.log(this.feedback);
+		this.feedback = this.feedbackForm.value;
+		console.log(this.feedback);
+
+		document.getElementsByTagName('form')[0].style.display = 'none';
+
+		this.feedbackservice.submitFeedback(this.feedback)
+		.subscribe((feedback) => {
+			this.fdb = feedback;
+			setInterval(() =>{
+				delete this.fdb;
+				document.getElementsByTagName('form')[0].style.display = 'block';
+			}, 5000);
+		}, errmess => this.errMess = errmess);
+
     this.feedbackForm.reset({
       firstname: '',
       lastname: '',

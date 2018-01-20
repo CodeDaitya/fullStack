@@ -58,7 +58,7 @@ fxLayoutGap="10px">
 		
 		<md-list [@expand]>
 			<md-list-item *ngFor="let leader of leaders">
-				<img src={{leader.image}} md-list-avatar alt="{{leader.name}} {{leader.abbr}}">
+				<img src={{BaseURL+leader.image}} md-list-avatar alt="{{leader.name}} {{leader.abbr}}">
 				<h5 md-line>{{ leader.name }} {{ leader.abbr }}</h5>
 				<h6 md-line>{{ leader.designation }}</h6>
 				<p md-line>{{ leader.description }}</p>
@@ -66,7 +66,12 @@ fxLayoutGap="10px">
 		</md-list>
 	</div>
 
-	<div [hidden]="leaders">
+	<div [hidden]="leaders||errMess">
 		<md-spinner></md-spinner><h4>Loading ... Please Wait</h4>
+	</div>
+
+	<div *ngIf="errMess">
+		<h2>Error</h2>
+		<h4>{{errMess}}</h4>
 	</div>
 </div>
